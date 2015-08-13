@@ -1,0 +1,72 @@
+#browser-tape-console {
+    border-radius: 5px;
+    background: black;
+    color: white;
+    font-family: Courier, monospace;
+    padding: 20px;
+ }
+
+#browser-tape-summary {
+    position: fixed;
+    right: 10px;
+    top: 80px;
+    min-width: 230px;
+    border-radius: 5px;
+    background: black;
+    color: white;
+    font-family: Courier, monospace;
+    font-weight: bold;
+
+    padding-left: 10px;
+    padding-right: 10px;
+    opacity: 0.8;
+}
+
+#browser-tape-summary:hover {
+        opacity: 1;
+}
+
+
+#browser-tape-summary .pass {
+    color: #5F5;
+}
+
+#browser-tape-summary .fail {
+    color: #F55;
+}
+
+#browser-tape-summary .running {
+    color: #9F9;
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+
+    animation-name: blinker;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}

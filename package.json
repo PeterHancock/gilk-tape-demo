@@ -1,0 +1,38 @@
+{
+  "name": "gilk-tape-demo",
+  "version": "0.0.0",
+  "description": "A Gilk Tape Demo",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp",
+    "watch": "gulp watch",
+    "server": "http-server build/public -p 8088",
+    "start": "npm run build && npm run server"
+  },
+  "author": "Peter Hancock",
+  "license": "MIT",
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  },
+  "devDependencies": {
+    "assign": "^0.1.7",
+    "faucet": "0.0.1",
+    "gilk": "^0.1.2",
+    "globby": "^2.1.0",
+    "gulp": "^3.9.0",
+    "gulp-rename": "^1.2.2",
+    "http-server": "~0.8.0",
+    "lodash": "^3.10.1",
+    "merge-stream": "^0.1.8",
+    "react": "^0.13.3",
+    "reactify": "^1.1.1",
+    "rimraf": "^2.4.2",
+    "tap-parser": "^1.1.6",
+    "tape": "^4.0.3",
+    "terminal.js": "^1.0.5",
+    "through": "^2.3.8",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
