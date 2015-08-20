@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>A Gilk Tape Demo</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="/gilk-tape-demo/css/all.css">
+  <style>
+      code[class*="language-"], pre[class*="language-"] {
+          border-radius: 3px;
+      }
+  </style>
+  <link rel="stylesheet" href="/gilk-tape-demo/css/browser-tape.css">
+  <!-- Let browser know website is optimized for mobile (Materialize) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+    <header>
+        <nav class="grey darken-4">
+          <div class="nav-wrapper">
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+              <li><a class="page-title" href="/gilk-tape-demo/">A Gilk Tape Demo</a></li>
+              <li><strong>test.js</strong></li>
+            </ul>
+          </div>
+          <a href="#browser-tape-console"><div class="z-depth-2" id="browser-tape-summary"></div></a>
+        </nav>
+    </header>
+    <div class="container">
+      <div id="header">
+      </div>
+      <div class="sections">
+          <h1 id="tap-test-anything-protocol-tests-with-tape-">TAP (Test Anything Protocol) tests with <code>tape</code></h1>
+
+          <div><pre class="line-numbers language-javascript" data-start="5"><code class="language-javascript">
+var _ = require('lodash'),
+    </code></pre></div>
+          <p><a href="https://github.com/substack/tape">tape</a> is explicitly <code>require</code>d - there is no global API</p>
+
+          <div><pre class="line-numbers language-javascript" data-start="7"><code class="language-javascript">    test = require('tape');
+
+</code></pre></div>
+          <p>Running 10 tests with a little delay ...</p>
+
+          <div><pre class="line-numbers language-javascript" data-start="12"><code class="language-javascript">_.times(10, function (i) {
+    </code></pre></div>
+          <p>A simple API</p>
+
+          <div><pre class="line-numbers language-javascript" data-start="14"><code class="language-javascript">    test('Test ' + i, function (assert) {
+        assert.plan(1);
+        setTimeout(function () {
+            assert.pass();
+        }, 50);
+    });
+});
+</code></pre></div>
+      </div>
+
+        <div class="row">
+          <div class="col s12">
+            <div class="card grey darken-4">
+              <div class="card-content white-text">
+                <span class="card-title">TAP output</span>
+                <div id="browser-tape-console"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+  </div>
+  <script type="text/javascript" src="/gilk-tape-demo/js/all.js"></script>
+   <script type="text/javascript" src="/gilk-tape-demo/js/browser-tape-bundle.js"></script>
+  <script type="text/javascript" src="/gilk-tape-demo/test-bundle.js"></script>
+</body>
+</html>
