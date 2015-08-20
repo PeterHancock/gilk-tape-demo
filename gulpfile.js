@@ -73,12 +73,11 @@ function buildDocsResources() {
 }
 
 function buildDocs() {
-    return gulp.src(['tests/**.js', 'tests/**/*.js'], {base: 'tests'})
+    return gulp.src('**/*.js', {cwd: 'tests', base: 'tests'})
         .pipe(gilk({
                 title: package.description,
                 index: 'README.md',
-                pageTmpl: 'docs-src/page.tmpl',
-                base: 'tests',
+                template: 'docs-src/page.tmpl',
                 bundle: function() {
                     var dir = path.dirname(this.srcfile),
                         name = path.basename(this.srcfile, '.js');

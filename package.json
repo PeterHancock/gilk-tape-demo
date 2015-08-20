@@ -19,7 +19,7 @@
   "devDependencies": {
     "assign": "^0.1.7",
     "faucet": "0.0.1",
-    "gilk": "^0.1.2",
+    "gilk": "0.3.0",
     "globby": "^2.1.0",
     "gulp": "^3.9.0",
     "gulp-rename": "^1.2.2",

@@ -25,6 +25,7 @@
           <div class="nav-wrapper">
             <ul id="nav-mobile" class="left hide-on-med-and-down">
               <li><a class="page-title" href="/">{{title}}</a></li>
+              <li><strong>{{srcfile}}</strong></li>
             </ul>
           </div>
            {{^isIndex}}
@@ -44,7 +45,7 @@
                   <ol>
                   {{#sources}}
                   <li>
-                      <a class="source" href="{{href}}">{{name}}</a>
+                      <a class="source" href="{{href}}">{{path}}</a>
                   </li>
                   {{/sources}}
                   </ol>
@@ -78,6 +79,7 @@
           </div>
         </div>
       {{/isIndex}}
+
 
   </div>
   <script type="text/javascript" src="/jquery/jquery.min.js"></script>
