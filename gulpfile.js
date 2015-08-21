@@ -10,7 +10,8 @@ var gulp = require('gulp'),
     path = require('path'),
     gilk = require('gilk'),
     package = require('./package'),
-    reactify = require('reactify');
+    reactify = require('reactify'),
+    livereload = require('gulp-livereload');
 
 var publicDir = 'build/public';
 
@@ -47,7 +48,9 @@ gulp.task('dist', ['clean:dist'], function() {
 gulp.task('default', ['build']);
 
 gulp.task('watch', function () {
-    gulp.watch('tests/**.js', ['build:tests']);
+    livereload.listen();
+    gulp.watch(['tests/**.js', 'README.md', 'docs-src/**'], ['build:tests']);
+    gulp.watch('browser/**', ['build']);
 });
 
 function buildDocsResources() {
@@ -104,7 +107,9 @@ function browserifyTests() {
             }))
             .pipe(gulp.dest('build/public'));
       });
-      merge(tasks).pipe(rtn);
+      merge(tasks)
+        .pipe(livereload())
+        .pipe(rtn);
     });
     return rtn;
 };
