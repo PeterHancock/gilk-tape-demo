@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     through = require('through'),
     source = require('vinyl-source-stream'),
     rename = require('gulp-rename'),
+    concat = require('gulp-concat'),
     merge = require('merge-stream'),
     path = require('path'),
     gilk = require('gilk'),
@@ -13,7 +14,7 @@ var gulp = require('gulp'),
     reactify = require('reactify'),
     livereload = require('gulp-livereload');
 
-var publicDir = 'build/public';
+var publicDir = 'build/gilk-tape-demo';
 
 gulp.task('clean', function (done) {
     rimraf('build', done);
@@ -54,25 +55,35 @@ gulp.task('watch', function () {
 });
 
 function buildDocsResources() {
-    return merge([
-        gulp.src([
-                'bower_components/prism/prism.js',
-                'docs-src/public/*'
-            ])
-            .pipe(gulp.dest(publicDir)),
-        gulp.src([
-                'dist/*'
-            ])
-            .pipe(gulp.dest(path.join(publicDir, 'browser-tape'))),
-        gulp.src([
-                'bower_components/materialize/dist/*/**'
-            ])
-            .pipe(gulp.dest(path.join(publicDir, 'materialize'))),
-        gulp.src([
-                'bower_components/jquery/dist/**'
-            ])
-            .pipe(gulp.dest(path.join(publicDir, 'jquery')))
-        ]);
+    var js = gulp.src([
+        'bower_components/jquery/dist/jquery.min.js',
+        'bower_components/materialize/dist/js/materialize.min.js',
+        'bower_components/prism/prism.js',
+        'docs-src/public/*.js'
+    ])
+        .pipe(concat('all.js'))
+        .pipe(gulp.dest(path.join(publicDir, 'js')));
+    var browserTapeJs = gulp.src([
+            'dist/browser-tape-bundle.js'
+        ])
+        .pipe(gulp.dest(path.join(publicDir, 'js')));
+
+    var css = gulp.src([
+        'docs-src/public/*.css',
+        'bower_components/materialize/dist/css/materialize.min.css'
+    ])
+        .pipe(concat('all.css'))
+        .pipe(gulp.dest(path.join(publicDir, 'css')));
+    var browserTapeCss = gulp.src([
+            'dist/browser-tape.css'
+        ])
+        .pipe(gulp.dest(path.join(publicDir, 'css')));
+    var fonts = gulp.src([
+            'bower_components/materialize/dist/font/**'
+        ])
+        .pipe(gulp.dest(path.join(publicDir, 'font')));
+    return merge([js, css, browserTapeJs, browserTapeCss, fonts]);
+
 }
 
 function buildDocs() {
@@ -81,6 +92,7 @@ function buildDocs() {
                 title: package.description,
                 index: 'README.md',
                 template: 'docs-src/page.tmpl',
+                baseurl: '/' + package.name,
                 bundle: function() {
                     var dir = path.dirname(this.srcfile),
                         name = path.basename(this.srcfile, '.js');
@@ -105,7 +117,7 @@ function browserifyTests() {
                 p.dirname = path.relative('tests', p.dirname);
                 p.basename += '-bundle';
             }))
-            .pipe(gulp.dest('build/public'));
+            .pipe(gulp.dest(publicDir));
       });
       merge(tasks)
         .pipe(livereload())

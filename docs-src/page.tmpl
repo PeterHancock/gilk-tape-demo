@@ -4,18 +4,15 @@
 <head>
   <title>{{title}}</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-
-  <link rel="stylesheet" href="/materialize/css/materialize.min.css">
-
-  <!-- Code highlighting -->
-  <link rel="stylesheet" href="/prism-hopscotch.css">
-  <link rel="stylesheet" href="/prism-line-numbers.css">
+  <link rel="stylesheet" href="{{{baseurl}}}/css/all.css">
   <style>
       code[class*="language-"], pre[class*="language-"] {
           border-radius: 3px;
       }
   </style>
-  <link rel="stylesheet" href="/browser-tape/browser-tape.css">
+  {{^isIndex}}
+  <link rel="stylesheet" href="{{{baseurl}}}/css/browser-tape.css">
+  {{/isIndex}}
   <!-- Let browser know website is optimized for mobile (Materialize) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
@@ -24,7 +21,7 @@
         <nav class="grey darken-4">
           <div class="nav-wrapper">
             <ul id="nav-mobile" class="left hide-on-med-and-down">
-              <li><a class="page-title" href="/">{{title}}</a></li>
+              <li><a class="page-title" href="{{{baseurl}}}/">{{title}}</a></li>
               <li><strong>{{srcfile}}</strong></li>
             </ul>
           </div>
@@ -45,7 +42,7 @@
                   <ol>
                   {{#sources}}
                   <li>
-                      <a class="source" href="{{href}}">{{path}}</a>
+                      <a class="source" href="{{{baseurl}}}/{{href}}">{{path}}</a>
                   </li>
                   {{/sources}}
                   </ol>
@@ -82,13 +79,10 @@
 
 
   </div>
-  <script type="text/javascript" src="/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
-  <script type="text/javascript" src="/prism.js"></script>
-  <script type="text/javascript" src="/prism-line-numbers.min.js"></script>
+  <script type="text/javascript" src="{{{baseurl}}}/js/all.js"></script>
   {{^isIndex}}
-   <script type="text/javascript" src="/browser-tape/browser-tape-bundle.js"></script>
-  <script type="text/javascript" src="/{{{bundle}}}"></script>
+   <script type="text/javascript" src="{{{baseurl}}}/js/browser-tape-bundle.js"></script>
+  <script type="text/javascript" src="{{{baseurl}}}/{{{bundle}}}"></script>
   {{/isIndex}}
 </body>
 </html>

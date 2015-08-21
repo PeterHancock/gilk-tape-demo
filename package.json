@@ -6,7 +6,7 @@
   "scripts": {
     "build": "gulp",
     "watch": "gulp watch",
-    "server": "http-server build/public -p 8088",
+    "server": "http-server build -p 8088",
     "start": "npm run build && npm run server"
   },
   "author": "Peter Hancock",
@@ -22,6 +22,7 @@
     "gilk": "0.3.0",
     "globby": "^2.1.0",
     "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
     "gulp-livereload": "^3.8.0",
     "gulp-rename": "^1.2.2",
     "http-server": "~0.8.0",
